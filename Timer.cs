@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,7 @@ public class Timer : MonoBehaviour
 {
     public int minutes;
     public float seconds;
+    public TextMeshProUGUI timerText;
 
     // Цикл обновления составляет примерно 0.01 секунды
     void Update()
@@ -28,5 +30,9 @@ public class Timer : MonoBehaviour
                 SceneManager.LoadScene(sceneIndex);
             }
         }
+
+        //Округляем значение секунд до целых для их вывода на экран
+        int roundSeconds = Mathf.RoundToInt(seconds);
+        timerText.text = minutes + ":" + roundSeconds;
     }
 }
